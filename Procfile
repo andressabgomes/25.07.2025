@@ -1,2 +1,2 @@
-web: cd backend && python src/main.py
+web: python app.py
 

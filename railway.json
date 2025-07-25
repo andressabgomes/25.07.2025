@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd backend && python src/main.py",
+    "startCommand": "python app.py",
     "healthcheckPath": "/api/health"
   }
 }
