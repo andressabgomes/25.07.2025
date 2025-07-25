@@ -1,12 +1,12 @@
 [phases.setup]
-nixPkgs = ["python39"]
+nixPkgs = ["python311", "python311Packages.pip"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["python3 -m pip install -r requirements.txt"]
 
 [phases.build]
-cmds = ["python -c 'import backend.seed_data'"]
+cmds = ["python3 -c 'print(\"Build completed\")'"]
 
 [start]
-cmd = "python app.py"
+cmd = "python3 app.py"
 
