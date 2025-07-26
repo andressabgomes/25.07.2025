@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Home, 
   Ticket, 
@@ -10,20 +11,26 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
-const Sidebar = ({ activeItem, onItemClick }) => {
+const Sidebar = () => {
   const { logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
-    { id: 'dashboard', icon: Home, label: 'Dashboard' },
-    { id: 'tickets', icon: Ticket, label: 'Tickets' },
-    { id: 'customers', icon: Users, label: 'Clientes' },
-    { id: 'users', icon: UserCheck, label: 'Usuários' },
-    { id: 'reports', icon: BarChart3, label: 'Relatórios' },
-    { id: 'settings', icon: Settings, label: 'Configurações' },
+    { id: 'dashboard', icon: Home, label: 'Dashboard', path: '/dashboard' },
+    { id: 'tickets', icon: Ticket, label: 'Tickets', path: '/tickets' },
+    { id: 'customers', icon: Users, label: 'Clientes', path: '/customers' },
+    { id: 'users', icon: UserCheck, label: 'Usuários', path: '/users' },
+    { id: 'reports', icon: BarChart3, label: 'Relatórios', path: '/reports' },
+    { id: 'settings', icon: Settings, label: 'Configurações', path: '/settings' },
   ];
 
   const handleLogout = () => {
     logout();
+  };
+
+  const handleItemClick = (path) => {
+    navigate(path);
   };
 
   return (
@@ -39,12 +46,13 @@ const Sidebar = ({ activeItem, onItemClick }) => {
       <nav className="flex-1 flex flex-col gap-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activeItem === item.id;
+          const isActive = location.pathname === item.path || 
+                          (item.path === '/dashboard' && location.pathname === '/');
           
           return (
             <button
               key={item.id}
-              onClick={() => onItemClick(item.id)}
+              onClick={() => handleItemClick(item.path)}
               className={`sidebar-item ${isActive ? 'active' : ''}`}
               title={item.label}
             >

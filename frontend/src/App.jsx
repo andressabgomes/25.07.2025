@@ -1,8 +1,12 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './components/Auth/Login';
 import Layout from './components/Layout/Layout';
 import Dashboard from './components/Dashboard/Dashboard';
+import Users from './components/Users/Users';
+import Customers from './components/Customers/Customers';
+import TicketDetails from './components/Tickets/TicketDetails';
 import './App.css';
 
 function AppContent() {
@@ -26,9 +30,18 @@ function AppContent() {
   }
 
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/tickets/:id" element={<TicketDetails />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
