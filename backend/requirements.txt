@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 sqlalchemy==2.0.23
@@ -12,4 +13,10 @@ loguru==0.7.2
 pytest==7.4.3
 pytest-asyncio==0.21.1
 httpx==0.25.2
+=======
+Flask==2.3.3
+Flask-CORS==4.0.0
+python-dotenv==1.0.0
+supabase==2.17.0
+>>>>>>> f33bc0b53c2ca8d10701bef456ca48990d2a500d
 

@@ -1,0 +1,21 @@
+{
+  "name": "customer-support-caja",
+  "version": "1.0.0",
+  "description": "Sistema fullstack de Customer Support com design tropical da marca Cajá",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm run preview",
+    "dev": "cd frontend && npm run dev"
+  },
+  "keywords": [
+    "customer-support",
+    "react",
+    "flask",
+    "caja"
+  ],
+  "author": "Manus",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.52.1"
+  }
+}
