@@ -8,5 +8,5 @@ cmds = ["pip install -r backend/requirements.txt"]
 cmds = ["echo 'Build completed'"]
 
 [start]
-cmd = "cd backend && python app.py"
+cmd = "python backend/start.py"
 
