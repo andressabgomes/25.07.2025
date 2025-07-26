@@ -1,155 +1,120 @@
-# Customer Support - Sistema Cajá
+# Customer Support Cajá - v2.0
 
-Sistema fullstack completo de atendimento ao cliente com design tropical da marca Cajá, desenvolvido com Flask (backend) e React + Tailwind (frontend).
+Sistema de Customer Support com arquitetura limpa e design tropical da marca Cajá.
 
-## 🎨 Características do Design
+## 🚀 Nova Arquitetura
 
-### Interface Tropical Cajá
-- **Paleta de cores**: Amarelo vibrante (#FFD33D), verde folha (#2E7D32), laranja suave (#FFAB40)
-- **Layout responsivo** com sidebar compacta (64px) e header corporativo
-- **Microinterações** suaves e feedback visual em todos os estados
-- **Tipografia moderna** e amigável para melhor experiência do usuário
+### ✅ **Melhorias Implementadas:**
 
-### Componentes Principais
-- **Sidebar vertical** com ícones, tooltips e indicador de item ativo
-- **Header corporativo** com logos, informações da unidade e menu do usuário
-- **Dashboard** com gráficos comparativos e métricas de atendimento
-- **Chatbot flutuante** para suporte instantâneo
+- **Arquitetura Limpa**: Separação clara de responsabilidades
+- **Camada de Serviços**: Lógica de negócio isolada
+- **Configuração Centralizada**: Gerenciamento de ambiente
+- **Factory Pattern**: Criação de aplicação flexível
+- **Tratamento de Erros**: Respostas padronizadas
+- **Documentação**: Código bem documentado
 
-## 🏗️ Arquitetura
-
-### Backend (Flask)
-- **Porta**: 5000
-- **Estrutura modular**: models/, routes/, main.py
-- **Autenticação**: JWT com middleware de segurança
-- **Banco de dados**: SQLite com SQLAlchemy
-- **API RESTful** com CORS habilitado
-
-### Frontend (React + Tailwind)
-- **Porta**: 5173
-- **Componentização clara** e reutilizável
-- **Gráficos interativos** com Recharts
-- **Responsividade garantida** para desktop e mobile
-- **Gerenciamento de estado** com Context API
-
-## 🚀 Como Executar
-
-### Pré-requisitos
-- Python 3.11+
-- Node.js 20+
-- pnpm
-
-### Iniciando o Backend
-```bash
-chmod +x start_backend.sh
-./start_backend.sh
-```
-
-### Iniciando o Frontend
-```bash
-chmod +x start_frontend.sh
-./start_frontend.sh
-```
-
-### Acesso
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:5000/api
-
-## 👥 Contas de Demonstração
-
-| Tipo | Email | Senha | Descrição |
-|------|-------|-------|-----------|
-| Admin | admin@teste.com | admin123 | Acesso completo ao sistema |
-| Agente | carlos@teste.com | 123456 | Agente de atendimento |
-| Agente | ana@teste.com | 123456 | Agente de atendimento |
-| Manager | manager@teste.com | 123456 | Gerente de equipe |
-
-## 📊 Funcionalidades
-
-### Dashboard
-- **Gráfico de barras** comparativo (abertos vs concluídos)
-- **Métricas de performance**: média, intervalo, picos e vales
-- **Abas interativas**: próximos e recentes atendimentos
-- **Botão de ação** para novos chamados
-
-### Gestão de Tickets
-- **CRUD completo** de tickets
-- **Filtros por status** e prioridade
-- **Atribuição de agentes**
-- **Histórico de atualizações**
-
-### Gestão de Clientes
-- **Cadastro de clientes** com informações completas
-- **Histórico de tickets** por cliente
-- **Busca e paginação**
-
-### Gestão de Usuários
-- **Controle de acesso** por roles (admin, agent, manager)
-- **Autenticação segura** com JWT
-- **Perfis de usuário** personalizáveis
-
-## 🛠️ Tecnologias Utilizadas
-
-### Backend
-- **Flask 2.3.3** - Framework web
-- **SQLAlchemy 3.0.5** - ORM para banco de dados
-- **Flask-CORS 4.0.0** - Suporte a CORS
-- **PyJWT 2.8.0** - Autenticação JWT
-- **Werkzeug 2.3.7** - Utilitários WSGI
-
-### Frontend
-- **React 18** - Biblioteca de interface
-- **Tailwind CSS** - Framework de estilos
-- **Recharts** - Biblioteca de gráficos
-- **Lucide React** - Ícones modernos
-- **Vite** - Build tool e dev server
-
-## 📁 Estrutura do Projeto
+### 📁 **Estrutura do Projeto:**
 
 ```
-Customer_Support/
 ├── backend/
-│   ├── src/
-│   │   ├── models/          # Modelos de dados
-│   │   ├── routes/          # Rotas da API
-│   │   ├── static/          # Arquivos estáticos
-│   │   └── main.py          # Ponto de entrada
-│   ├── venv/                # Ambiente virtual
-│   ├── requirements.txt     # Dependências Python
-│   └── seed_data.py         # Script de dados de teste
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # Componentes React
-│   │   ├── contexts/        # Contextos (Auth, etc)
-│   │   ├── services/        # Serviços de API
-│   │   └── assets/          # Recursos estáticos
-│   ├── public/              # Arquivos públicos
-│   └── package.json         # Dependências Node.js
-├── start_backend.sh         # Script de inicialização backend
-├── start_frontend.sh        # Script de inicialização frontend
-└── README.md               # Esta documentação
+│   ├── app.py              # Aplicação principal
+│   ├── config/             # Configurações
+│   │   └── __init__.py
+│   ├── services/           # Camada de serviços
+│   │   ├── __init__.py
+│   │   ├── supabase_service.py
+│   │   ├── auth_service.py
+│   │   ├── ticket_service.py
+│   │   ├── customer_service.py
+│   │   └── user_service.py
+│   ├── models/             # Modelos de dados
+│   ├── routes/             # Rotas (legado)
+│   └── requirements.txt
+├── frontend/               # Aplicação React
+├── nixpacks.toml          # Configuração Railway
+├── vercel.json            # Configuração Vercel
+└── env.example            # Variáveis de ambiente
 ```
 
-## 🎯 Próximos Passos
+## 🛠️ **Tecnologias:**
 
-### Melhorias Sugeridas
-1. **Notificações em tempo real** com WebSockets
-2. **Upload de arquivos** em tickets
-3. **Relatórios avançados** com exportação
-4. **Chat interno** entre agentes
-5. **Integração com APIs externas** (email, SMS)
+### Backend:
+- **Flask**: Framework web
+- **Supabase**: Banco de dados
+- **Python 3.9**: Linguagem
+- **Arquitetura Limpa**: Padrões de design
 
-### Deploy em Produção
-1. **Backend**: Usar Gunicorn + Nginx
-2. **Frontend**: Build estático com CDN
-3. **Banco de dados**: PostgreSQL ou MySQL
-4. **Monitoramento**: Logs e métricas de performance
+### Frontend:
+- **React**: Framework UI
+- **Vite**: Build tool
+- **Tailwind CSS**: Estilização
+- **Shadcn/ui**: Componentes
 
-## 📝 Licença
+## 🚀 **Deploy:**
 
-Este projeto foi desenvolvido como demonstração de sistema fullstack moderno com design tropical da marca Cajá.
+### Railway (Backend):
+```bash
+# Variáveis de ambiente necessárias:
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your-anon-key
+SECRET_KEY=your-secret-key
+FLASK_ENV=production
+```
+
+### Vercel (Frontend):
+- Deploy automático via GitHub
+- Proxy configurado para Railway
+
+## 📋 **Endpoints:**
+
+### Health Check:
+```
+GET /api/health
+```
+
+### Autenticação:
+```
+POST /api/auth/login
+POST /api/auth/verify
+```
+
+### Dados:
+```
+GET /api/users
+GET /api/customers
+GET /api/tickets
+GET /api/tickets/stats
+```
+
+## 🔧 **Desenvolvimento Local:**
+
+### Backend:
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+### Frontend:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 🎯 **Próximos Passos:**
+
+1. ✅ **Implementar JWT** para autenticação
+2. ✅ **Adicionar validação** de dados
+3. ✅ **Implementar cache** Redis
+4. ✅ **Adicionar logs** estruturados
+5. ✅ **Criar testes** automatizados
+
+## 📞 **Suporte:**
+
+Para dúvidas ou problemas, abra uma issue no GitHub.
 
 ---
 
-**Desenvolvido com ❤️ para a marca Cajá**
+**Desenvolvido com ❤️ pela equipe Cajá**
 

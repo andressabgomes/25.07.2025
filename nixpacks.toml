@@ -8,5 +8,5 @@ cmds = ["python3 -m pip install Flask Flask-CORS python-dotenv supabase"]
 cmds = ["echo 'Build completed'"]
 
 [start]
-cmd = "python3 backend/start.py"
+cmd = "cd backend && python3 app.py"
 
