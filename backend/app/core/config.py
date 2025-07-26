@@ -12,10 +12,10 @@ class Settings(BaseSettings):
     
     # Application
     app_name: str = "Customer Support API"
-    debug: bool = False
+    debug: bool = True  # Enable debug mode
     
-    # Database
-    database_url: str = "postgresql://postgres:postgres@localhost:5432/customer_support"
+    # Database - Using SQLite for development
+    database_url: str = "sqlite:///./customer_support.db"
     
     # Security
     secret_key: str = "your-secret-key-change-in-production"

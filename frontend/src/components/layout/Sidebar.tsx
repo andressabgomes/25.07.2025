@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { 
   LayoutDashboard, 
   Ticket, 
@@ -16,13 +17,12 @@ import { cn } from '@/lib/utils'
 interface SidebarItem {
   icon: React.ElementType
   label: string
-  active?: boolean
-  href?: string
+  href: string
 }
 
 const sidebarItems: SidebarItem[] = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
-  { icon: Ticket, label: 'Chamados', active: true, href: '/tickets' },
+  { icon: Ticket, label: 'Chamados', href: '/tickets' },
   { icon: Calendar, label: 'Calendário', href: '/calendar' },
   { icon: DollarSign, label: 'Financeiro', href: '/financial' },
   { icon: BarChart3, label: 'Relatórios', href: '/reports' },
@@ -33,13 +33,19 @@ const sidebarItems: SidebarItem[] = [
 
 const Sidebar = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const handleNavigation = (href: string) => {
+    router.push(href)
+  }
 
   return (
     <aside className="w-16 bg-white border-r border-gray-200 flex flex-col items-center py-6">
       <nav className="flex flex-col space-y-4">
         {sidebarItems.map((item, index) => {
           const Icon = item.icon
-          const isActive = item.active
+          const isActive = pathname === item.href || (pathname === '/' && item.href === '/dashboard')
           const isHovered = hoveredItem === item.label
 
           return (
@@ -50,8 +56,10 @@ const Sidebar = () => {
               onMouseLeave={() => setHoveredItem(null)}
             >
               <button
+                onClick={() => handleNavigation(item.href)}
+                title={item.label}
                 className={cn(
-                  "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200",
+                  "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer",
                   isActive 
                     ? "bg-orange-100 text-orange-600 border-2 border-orange-300" 
                     : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"

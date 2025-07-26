@@ -1,22 +1,17 @@
-<<<<<<< HEAD
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-sqlalchemy==2.0.23
-alembic==1.12.1
-psycopg2-binary==2.9.9
-pydantic==2.5.0
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
-python-dotenv==1.0.0
-loguru==0.7.2
-pytest==7.4.3
-pytest-asyncio==0.21.1
-httpx==0.25.2
-=======
-Flask==2.3.3
-Flask-CORS==4.0.0
-python-dotenv==1.0.0
-supabase==2.17.0
->>>>>>> f33bc0b53c2ca8d10701bef456ca48990d2a500d
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+sqlalchemy>=2.0.23
+alembic>=1.12.1
+psycopg2-binary>=2.9.9
+pydantic>=2.11.7,<3.0.0
+pydantic-settings>=2.0.0
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
+loguru>=0.7.2
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+httpx>=0.26,<0.29
+supabase>=2.17.0
 

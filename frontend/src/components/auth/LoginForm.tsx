@@ -93,7 +93,7 @@ const LoginForm = () => {
 
           <div className="text-center text-sm text-gray-600">
             <p>Dados de teste:</p>
-            <p>Email: admin@teste.com</p>
+            <p>Email: admin@caja.com</p>
             <p>Senha: admin123</p>
           </div>
         </form>
