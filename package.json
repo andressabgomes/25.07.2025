@@ -7,8 +7,15 @@
     "start": "cd frontend && npm run preview",
     "dev": "cd frontend && npm run dev"
   },
-  "keywords": ["customer-support", "react", "flask", "caja"],
+  "keywords": [
+    "customer-support",
+    "react",
+    "flask",
+    "caja"
+  ],
   "author": "Manus",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.52.1"
+  }
 }
-
