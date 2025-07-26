@@ -1,100 +1,52 @@
 #!/usr/bin/env python3
 """
-Aplicação Flask simplificada para Railway
+Aplicação Flask ultra-simples para Railway
 """
 
 import os
-import sys
-
-# Adicionar o diretório src ao path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-try:
-    from lib.supabase import get_supabase_client
-    SUPABASE_AVAILABLE = True
-except ImportError:
-    SUPABASE_AVAILABLE = False
-    print("⚠️ Supabase não disponível")
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'asdf#FGSgvasgf$5$WGT'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'secret-key-123'
 
 # Configurar CORS
 CORS(app, origins="*")
 
 @app.route('/api/health')
 def health_check():
-    try:
-        if SUPABASE_AVAILABLE:
-            # Testar conexão com Supabase
-            supabase = get_supabase_client()
-            response = supabase.table('users').select('count').limit(1).execute()
-            
-            return jsonify({
-                "status": "healthy", 
-                "service": "Customer Support API",
-                "database": "Supabase",
-                "connection": "OK"
-            }), 200
-        else:
-            return jsonify({
-                "status": "healthy", 
-                "service": "Customer Support API",
-                "database": "Not configured",
-                "connection": "OK"
-            }), 200
-    except Exception as e:
-        return jsonify({
-            "status": "unhealthy",
-            "service": "Customer Support API", 
-            "error": str(e)
-        }), 500
+    return jsonify({
+        "status": "healthy", 
+        "service": "Customer Support API",
+        "message": "Backend funcionando!"
+    }), 200
 
 @app.route('/api/users')
 def get_users():
-    try:
-        if SUPABASE_AVAILABLE:
-            supabase = get_supabase_client()
-            response = supabase.table('users').select('*').execute()
-            return jsonify(response.data), 200
-        else:
-            return jsonify({"error": "Supabase not configured"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify([
+        {"id": 1, "name": "Admin", "email": "admin@teste.com"},
+        {"id": 2, "name": "Agente", "email": "agente@teste.com"}
+    ]), 200
 
 @app.route('/api/customers')
 def get_customers():
-    try:
-        if SUPABASE_AVAILABLE:
-            supabase = get_supabase_client()
-            response = supabase.table('customers').select('*').execute()
-            return jsonify(response.data), 200
-        else:
-            return jsonify({"error": "Supabase not configured"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify([
+        {"id": 1, "name": "Cliente 1", "email": "cliente1@teste.com"},
+        {"id": 2, "name": "Cliente 2", "email": "cliente2@teste.com"}
+    ]), 200
 
 @app.route('/api/tickets')
 def get_tickets():
-    try:
-        if SUPABASE_AVAILABLE:
-            supabase = get_supabase_client()
-            response = supabase.table('tickets').select('*, customer:customers(*)').execute()
-            return jsonify(response.data), 200
-        else:
-            return jsonify({"error": "Supabase not configured"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify([
+        {"id": 1, "title": "Ticket 1", "status": "aberto"},
+        {"id": 2, "title": "Ticket 2", "status": "fechado"}
+    ]), 200
 
 @app.route('/')
 def home():
     return jsonify({
         "message": "Customer Support API - Railway",
         "status": "running",
-        "supabase": SUPABASE_AVAILABLE,
         "endpoints": {
             "health": "/api/health",
             "users": "/api/users", 

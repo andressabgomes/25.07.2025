@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["python39", "python39Packages.pip"]
+nixPkgs = ["python39"]
 
 [phases.install]
-cmds = ["python3 -m pip install -r backend/requirements.txt"]
+cmds = ["python3 -m pip install Flask Flask-CORS python-dotenv supabase"]
 
 [phases.build]
 cmds = ["echo 'Build completed'"]
