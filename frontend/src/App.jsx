@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Users from './components/Users/Users';
 import Customers from './components/Customers/Customers';
 import TicketDetails from './components/Tickets/TicketDetails';
+import Settings from './components/Settings/Settings';
 import './App.css';
 
 function AppContent() {
@@ -38,6 +39,7 @@ function AppContent() {
           <Route path="/users" element={<Users />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/tickets/:id" element={<TicketDetails />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Layout>
