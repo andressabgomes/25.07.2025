@@ -324,11 +324,7 @@ const Settings = () => {
               onClick={() => handleInputChange('theme', theme.value)}
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className={`w-4 h-4 rounded-full border-2 ${
-                  settings.theme === theme.value 
-                    ? 'border-primary bg-primary' 
-                    : 'border-border'
-                }`}>
+                <div className={`w-4 h-4 rounded-full border-2 ${settings.theme === theme.value ? 'border-primary bg-primary' : 'border-border'}`}>
                   {settings.theme === theme.value && (
                     <div className="w-full h-full rounded-full bg-white scale-50"></div>
                   )}

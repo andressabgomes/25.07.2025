@@ -42,7 +42,25 @@ def home():
         }
     }), 200
 
-@app.route('/api/auth/login', methods=['POST'])
+@app.route("/api/auth/verify")
+def verify_token():
+    """Verifica a validade do token"""
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or not auth_header.startswith("Bearer "):
+        return jsonify({"success": False, "error": "Token não fornecido ou inválido"}), 401
+    
+    token = auth_header.split(" ")[1]
+    
+    # Em um cenário real, você decodificaria e validaria o token JWT aqui.
+    # Por simplicidade, estamos apenas verificando se é um token mock.
+    if token.startswith("mock-token-"):
+        user_id = token.split("-")[2]
+        # Poderia buscar o usuário no banco de dados aqui
+        return jsonify({"success": True, "message": "Token válido", "user_id": user_id}), 200
+    else:
+        return jsonify({"success": False, "error": "Token inválido"}), 401
+
+@app.route("/api/auth/login", methods=["POST"])
 def login():
     """Login do usuário"""
     try:
@@ -98,7 +116,18 @@ def get_customers():
     ]
     return jsonify(customers), 200
 
-@app.route('/api/tickets')
+@app.route("/api/tickets/stats")
+def get_ticket_stats():
+    """Retorna estatísticas de tickets"""
+    stats = {
+        "total_tickets": 150,
+        "open_tickets": 30,
+        "closed_tickets": 120,
+        "avg_resolution_time": "2 dias"
+    }
+    return jsonify(stats), 200
+
+@app.route("/api/tickets")
 def get_tickets():
     """Lista todos os tickets"""
     tickets = [
