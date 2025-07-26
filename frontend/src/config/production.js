@@ -21,5 +21,5 @@ export const getApiBaseUrl = () => {
   if (isProduction) {
     return '/api'; // Vercel fará proxy para Railway
   }
-  return 'http://localhost:5001/api'; // Desenvolvimento local
+  return 'https://5000-iadtp2mmvuwiqjt6mjfgw-2caab039.manusvm.computer/api'; // Desenvolvimento local
 }; 
