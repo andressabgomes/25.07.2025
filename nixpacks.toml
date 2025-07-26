@@ -8,5 +8,5 @@ cmds = ["pip install -r requirements.txt"]
 cmds = ["echo 'Build completed'"]
 
 [start]
-cmd = "cd backend && python3 src/main_railway.py"
+cmd = "cd backend && python3 app.py"
 
